@@ -2,13 +2,17 @@ var nomeGlobal;
 var mensagemGlobal;
 var dateGlobal;
 let checked = false;
+var darkMode = false;
 
 function conferirMensagemWhatsApp() {
     var nome = document.getElementById("nome").value;
     var mensagem = document.getElementById("mensagem").value;
     var date = new Date();
 
-    console.log(date);
+    if(nome.trim().length < 1 || mensagem.trim().length < 1) {
+        alert("Por favor preencha os campos.");
+        return;
+    }
 
     nomeGlobal = nome;
     mensagemGlobal = mensagem;
@@ -24,7 +28,9 @@ function conferirMensagemWhatsApp() {
 
     if (checked == true) {
         var infoDiv = document.getElementById("info");
+        btnSend = document.getElementById("btnSend")
         infoDiv.style.display = "block"
+        btnSend.style.display = "block"
     }
 
 }
@@ -60,4 +66,26 @@ function enviar() {
         dateGlobal;
 
     window.open(linkWhatsApp);
+    checked = false;
+    window.location.reload();
+}
+
+function setDarkMode() {
+    darkMode = !darkMode;
+
+    body = document.getElementById("body");
+    navbar = document.getElementById("navbar");
+    card = document.getElementById("card");
+
+    if(darkMode == true) {
+        body.style.background = "black";
+        navbar.setAttribute('class', 'navbar navbar-dark bg-dark');
+        card.setAttribute('class', 'card text-bg-dark');
+        
+    }
+    else {
+        body.style.background = "white";
+        navbar.setAttribute('class', 'navbar navbar-light bg-light');
+        card.setAttribute('class', 'card');
+    }
 }
