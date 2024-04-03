@@ -1,7 +1,7 @@
 var nomeGlobal;
 var mensagemGlobal;
 var dateGlobal;
-let checked = false;
+var checked = false;
 var darkMode = false;
 
 function conferirMensagemWhatsApp() {
@@ -18,21 +18,20 @@ function conferirMensagemWhatsApp() {
     mensagemGlobal = mensagem;
     dateGlobal = date;
 
-    date = formatDate(date);
+    dateGlobal = formatDate(dateGlobal);
 
     document.getElementById("confNome").textContent = nome;
     document.getElementById("confMsg").textContent = mensagem;
     document.getElementById("confDate").textContent = date;
 
-    checked = true
+    checked = true;
 
     if (checked == true) {
         var infoDiv = document.getElementById("info");
-        btnSend = document.getElementById("btnSend")
-        infoDiv.style.display = "block"
-        btnSend.style.display = "block"
+        btnSend = document.getElementById("btnSend");
+        infoDiv.style.display = "block";
+        btnSend.style.display = "block";
     }
-
 }
 
 function formatDate(date) {
@@ -71,21 +70,25 @@ function enviar() {
 }
 
 function setDarkMode() {
+
     darkMode = !darkMode;
 
     body = document.getElementById("body");
     navbar = document.getElementById("navbar");
     card = document.getElementById("card");
+    icon = document.getElementById("moonIcon")
 
     if(darkMode == true) {
         body.style.background = "black";
         navbar.setAttribute('class', 'navbar navbar-dark bg-dark');
         card.setAttribute('class', 'card text-bg-dark');
-        
+        icon.style.color = "white";
     }
+
     else {
         body.style.background = "white";
         navbar.setAttribute('class', 'navbar navbar-light bg-light');
         card.setAttribute('class', 'card');
+        icon.style.color = "black";
     }
 }
