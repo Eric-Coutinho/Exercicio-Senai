@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato</title>
+  </head>
+  <body>
+    <h1>Contato</h1>
+
+    <h2>Insira dados iniciais para envio</h2>
+    <label for="nome">Seu nome:</label>
+    <input type="text" id="nome" />
+    <br />
+    <br />
+    <label for="mensagem">Observações:</label>
+    <textarea type="text" id="mensagem"></textarea>
+    <br />
+    <br />
+    <button onclick="conferirMensagemWhatsApp()">Conferir Mensagem</button>
+    <br /><br />
+
+    <p>Nome: <span id="confNome"></span></p>
+    <p>Observações: <span id="confMsg"></span></p>
+    <p>Data: <span id="confDate"></span></p>
+
+    <button onclick="enviar()">Enviar Mensagem</button>
+
+    <script>
+      var nomeGlobal;
+      var mensagemGlobal;
+      var dateGlobal;
+
+      function conferirMensagemWhatsApp() {
+        var nome = document.getElementById("nome").value;
+        var mensagem = document.getElementById("mensagem").value;
+        var date = new Date();
+
+        nomeGlobal = nome;
+        mensagemGlobal = mensagem;
+        dateGlobal = date;
+
+        document.getElementById("confNome").textContent = nome;
+        document.getElementById("confMsg").textContent = mensagem;
+        document.getElementById("conDate").textContent = date;
+      }
+
+      function enviar() {
+        var numeroTelefone = "5541999999999";
+
+        var linkWhatsApp =
+          "https://wa.me/" +
+          numeroTelefone +
+          "?text=NOME DO RECEPTOR(A): " +
+          nomeGlobal +
+          " - " +
+          mensagemGlobal +
+          " - " +
+          dateGlobal;
+
+        window.open(linkWhatsApp);
+      }
+    </script>
+  </body>
+</html>
